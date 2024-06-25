@@ -1,0 +1,70 @@
+/* Navbar.css */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  background-color: white;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  transition: top 0.3s;
+  z-index: 1000;
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1024px;
+  padding: 0 1rem;
+}
+
+.navbar.hidden {
+  top: -60px;
+}
+
+.nav-links {
+  display: flex;
+}
+
+.nav-links a {
+  color: var(--primary-color);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+}
+
+.nav-links a.active {
+  background-color: var(--grey-color);
+  border-radius: 10px
+}
+.nav-links a:hover {
+  background-color: var(--secondary-color);
+  border-radius: 10px;
+  color: white;
+}
+
+.nav-icon {
+  display: none;
+}
+
+@media (max-width: 660px) {
+  .nav-links {
+    display: none;
+  }
+
+  .nav-icon {
+    display: block;
+  }
+
+  .ant-drawer-body a {
+    display: block;
+    padding: 1rem 0;
+    color: var(--primary-color);
+    text-decoration: none;
+  }
+
+  .ant-drawer-body a.active {
+    background-color: var(--grey-color);
+  }
+}

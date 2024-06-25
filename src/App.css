@@ -1,38 +1,85 @@
-.App {
+/* App.css */
+:root {
+  --primary-color: #495E57;
+  --secondary-color: #F4CE14;
+  --grey-color: #E3E3E3;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: white;
+}
+
+.full-width-background {
+  width: 100%;
+  background-color: var(--primary-color);
+}
+
+.container {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 1rem 1rem;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  transition: top 0.3s;
+  z-index: 1000;
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar.hidden {
+  top: -60px;
+}
+
+
+
+.main-content {
+  padding-top: 50px;
+}
+
+.introduction {
+  padding: 2rem;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.specials-section,
+.menu-section,
+.reservation-section,
+.about-section,
+.login-section {
+  padding: 2rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.dish-card {
+  border: 1px solid var(--grey-color);
+  border-radius: 5px;
+  padding: 1rem;
+  margin: 1rem;
+  text-align: center;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.mainSection {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+.text-yellow{
+  color: var(--secondaryColor);
+}
+.text-white{
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.text-green {
+  color: var(--primaryColor);
 }
