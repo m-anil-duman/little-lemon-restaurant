@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Form, Button, DatePicker, Select, InputNumber, Card, Modal, message } from 'antd';
+import { Form, Button, DatePicker, Select, InputNumber, Card, Modal } from 'antd';
 import moment from 'moment';
 import './styles/Reservation.css';
 import { fetchAPI, submitAPI } from '../components/utils';
@@ -14,10 +14,7 @@ const Reservation = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const allAvailableTimes = [
-    '09:00', '09:30', '10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '13:00', '13:30', '14:00', '14:30',
-    '15:00', '15:30', '16:00', '16:30', '17:00', '17:30', '18:00', '18:30', '19:00', '19:30', '20:00', '20:30', '21:00'
-  ];
+
 
   useEffect(() => {
     if (selectedDate) {
@@ -39,7 +36,7 @@ const Reservation = () => {
       guests: values.guests,
       occasion: values.occasion,
     };
-    await submitAPI(newReservation);
+    await submitAPI(newReservation,setLoading);
     setModalMessage('We received your reservation');
     setModalVisible(true);
     fetchReservedTimes(newReservation.date);
@@ -83,7 +80,7 @@ const Reservation = () => {
           <Form.Item
             name="guests"
             label="Number of Guests"
-            rules={[{ required: true, message: 'Please input the number of guests!' }]}
+            rules={[{ required: true, message: 'Please input the number of guests!'}]}
           >
             <InputNumber min={1} max={20} style={{ width: '100%' }} />
           </Form.Item>
