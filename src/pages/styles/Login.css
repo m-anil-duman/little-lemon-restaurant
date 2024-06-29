@@ -28,4 +28,15 @@
   .login-form-forgot {
     float: right;
   }
+  .login-form-button.ant-btn-primary {
+    width: 100%;
+    background-color: var(--primary-color) !important;
+    border: none !important;
+    color: white !important;
+    transition: background-color 0.3s ease !important;
+  }
   
+  .login-form-button.ant-btn-primary:hover {
+    background-color: var(--secondary-color) !important;
+    color: var(--primary-color) !important;
+  }  

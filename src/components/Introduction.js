@@ -35,14 +35,7 @@ const Introduction = ({ title, subtitle, description, image, reverse = false ,ty
           </div>
         )
       }
-      /* to render image */
-      const toRenderImage = () => {
-        return (
-          <div>
-            
-          </div>
-        )
-      }
+      
     
       return (
         <>

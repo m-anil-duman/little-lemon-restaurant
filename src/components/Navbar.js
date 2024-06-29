@@ -31,11 +31,11 @@ const Navbar = () => {
   };
 
   return (
-    <div className={`navbar ${hidden ? 'hidden' : ''}`}>
+    <nav className={`navbar ${hidden ? 'hidden' : ''}`}>
       <div className="container">
         <div className="logo">Restaurant Logo</div>
         <div className="nav-links">
-          <NavLink to="/" exact activeClassName="active">Home</NavLink>
+          <NavLink to="/" exact={true} activeClassName="active">Home</NavLink>
           <NavLink to="/menu" activeClassName="active">Menu</NavLink>
           <NavLink to="/reservation" activeClassName="active">Reservation</NavLink>
           <NavLink to="/about" activeClassName="active">About</NavLink>
@@ -58,7 +58,7 @@ const Navbar = () => {
         <NavLink to="/about" activeClassName="active" onClick={closeDrawer}>About</NavLink>
         <NavLink to="/login" activeClassName="active" onClick={closeDrawer}>Login</NavLink>
       </Drawer>
-    </div>
+    </nav>
   );
 };
 

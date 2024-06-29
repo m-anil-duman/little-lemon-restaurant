@@ -1,18 +1,48 @@
-// src/pages/Reservation.js
-import React, { useState } from 'react';
-import { Form, Input, Button, DatePicker, TimePicker, Select, InputNumber, Card, Modal } from 'antd';
+import React, { useState, useEffect } from 'react';
+import { Form, Button, DatePicker, Select, InputNumber, Card, Modal, message } from 'antd';
+import moment from 'moment';
 import './styles/Reservation.css';
+import { fetchAPI, submitAPI } from '../components/utils';
+import { CustomTimePicker } from '../components/CustomTimePicker';
 
 const { Option } = Select;
 
 const Reservation = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [modalMessage, setModalMessage] = useState('');
+  const [reservedTimes, setReservedTimes] = useState([]);
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [loading, setLoading] = useState(false);
 
-  const onFinish = (values) => {
-    console.log('Received values of form: ', values);
+  const allAvailableTimes = [
+    '09:00', '09:30', '10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '13:00', '13:30', '14:00', '14:30',
+    '15:00', '15:30', '16:00', '16:30', '17:00', '17:30', '18:00', '18:30', '19:00', '19:30', '20:00', '20:30', '21:00'
+  ];
+
+  useEffect(() => {
+    if (selectedDate) {
+      fetchReservedTimes(selectedDate);
+    }
+  }, [selectedDate]);
+
+  const fetchReservedTimes = async (date) => {
+    setLoading(true);
+    const reserved = await fetchAPI(date);
+    setReservedTimes(reserved);
+    setLoading(false);
+  };
+
+  const onFinish = async (values) => {
+    const newReservation = {
+      date: values.date.format('YYYY-MM-DD'),
+      time: moment(values.time, 'HH:mm').format('HH:mm'),
+      guests: values.guests,
+      occasion: values.occasion,
+    };
+    await submitAPI(newReservation);
     setModalMessage('We received your reservation');
     setModalVisible(true);
+    fetchReservedTimes(newReservation.date);
   };
 
   const handleModalOk = () => {
@@ -34,14 +64,21 @@ const Reservation = () => {
             label="Appointment Date"
             rules={[{ required: true, message: 'Please select your appointment date!' }]}
           >
-            <DatePicker style={{ width: '100%' }} />
+            <DatePicker
+              style={{ width: '100%' }}
+              onChange={(date) => setSelectedDate(date)}
+            />
           </Form.Item>
           <Form.Item
             name="time"
             label="Appointment Time"
             rules={[{ required: true, message: 'Please select your appointment time!' }]}
           >
-            <TimePicker use12Hours format="h:mm a" minuteStep={15} style={{ width: '100%' }} />
+            <CustomTimePicker
+              startTime="09:00"
+              endTime="23:00"
+              reservedTimes={reservedTimes}
+            />
           </Form.Item>
           <Form.Item
             name="guests"
@@ -63,7 +100,7 @@ const Reservation = () => {
             </Select>
           </Form.Item>
           <Form.Item>
-            <Button type="primary" htmlType="submit" className="reservation-form-button">
+            <Button type="primary" htmlType="submit" className="reservation-form-button" loading={loading}>
               Make Your Reservation
             </Button>
           </Form.Item>
