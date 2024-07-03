@@ -1,21 +1,21 @@
-// src/pages/Menu.js
 import React from 'react';
+import './DishCard.css';
 
-const Menu = () => {
+const DishCard = ({ dish }) => {
+  const imageUrl = `http://localhost:3000/${dish['dish-image']}`;
+
   return (
-    <div className="main-content">
-      <section className="menu-section">
-        <h1>Our Menu</h1>
-        <p>Explore our delicious meals.</p>
-        <h2>Entrees</h2>
-        {/* Add DishCard components for Entrees here */}
-        <h2>Appetizers</h2>
-        {/* Add DishCard components for Appetizers here */}
-        <h2>Desserts</h2>
-        {/* Add DishCard components for Desserts here */}
-      </section>
-    </div>
+    <article className="dish-card">
+      <div className="dish-card-image">
+        <img className='DishImage' src={imageUrl} alt={dish['dish-name']} />
+      </div>
+      <div className="dish-card-content">
+        <h3 className="dish-card-title">{dish['dish-name']}</h3>
+        <p className="dish-card-price">${dish['dish-price']}</p>
+        <p className="dish-card-details">{dish['dish-details']}</p>
+      </div>
+    </article>
   );
 };
 
-export default Menu;
+export default DishCard;

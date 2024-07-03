@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { MenuOutlined, CloseOutlined } from '@ant-design/icons';
 import { Drawer, Button } from 'antd';
 import './Navbar.css';
+import Icon from '../assets/Logo';
 
 const Navbar = () => {
   const [hidden, setHidden] = useState(false);
@@ -33,13 +34,13 @@ const Navbar = () => {
   return (
     <nav className={`navbar ${hidden ? 'hidden' : ''}`}>
       <div className="container">
-        <div className="logo">Restaurant Logo</div>
+        <Link to="/" className="logo" ><Icon/></Link>
         <div className="nav-links">
-          <NavLink to="/" exact={true} activeClassName="active">Home</NavLink>
-          <NavLink to="/menu" activeClassName="active">Menu</NavLink>
-          <NavLink to="/reservation" activeClassName="active">Reservation</NavLink>
-          <NavLink to="/about" activeClassName="active">About</NavLink>
-          <NavLink to="/login" activeClassName="active">Login</NavLink>
+          <NavLink to="/"  activeclassname="active">Home</NavLink>
+          <NavLink to="/menu" activeclassname="active">Menu</NavLink>
+          <NavLink to="/reservation" activeclassname="active">Reservation</NavLink>
+          <NavLink to="/about" activeclassname="active">About</NavLink>
+          <NavLink to="/login" activeclassname="active">Login</NavLink>
         </div>
         <div className="nav-icon">
           <Button type="primary" icon={<MenuOutlined />} onClick={showDrawer} />
@@ -52,7 +53,7 @@ const Navbar = () => {
         open={drawerVisible}
         closeIcon={<CloseOutlined />}
       >
-        <NavLink to="/" exact activeClassName="active" onClick={closeDrawer}>Home</NavLink>
+        <NavLink to="/"  activeClassName="active" onClick={closeDrawer}>Home</NavLink>
         <NavLink to="/menu" activeClassName="active" onClick={closeDrawer}>Menu</NavLink>
         <NavLink to="/reservation" activeClassName="active" onClick={closeDrawer}>Reservation</NavLink>
         <NavLink to="/about" activeClassName="active" onClick={closeDrawer}>About</NavLink>

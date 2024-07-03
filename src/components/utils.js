@@ -1,5 +1,3 @@
-import React, { lazy } from "react";
-
 const seededRandom = function (seed) {
     var m = 2**35 - 31;
     var a = 185852;
@@ -24,15 +22,7 @@ export const fetchAPI = function(date) {
     console.log(result,"result");
     return result;
 };
-export async function submitAPI (formData,setLoading){
-    
-    try {
-        setLoading(true);
-        lazy(5000);
-        
-    }
-    finally {
-        setLoading(false);
-    }
+export const submitAPI = function(formData) {
     return true;
 };
+

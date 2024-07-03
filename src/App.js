@@ -8,6 +8,7 @@ import Reservation from './pages/Reservation';
 import About from './pages/About';
 import Login from './pages/Login';
 import { ConfigProvider } from 'antd';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -22,10 +23,9 @@ function App() {
     }}
     >
       <Router>
-        <div className="full-width-background">
+        <div className="content-wrapper">
           <Navbar />
-        </div>
-        <div className="main-content">
+          <main>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/menu" element={<Menu />} />
@@ -33,7 +33,9 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/login" element={<Login />} />
           </Routes>
-        </div>
+          </main>
+          <Footer/>
+          </div>
       </Router>
     </ConfigProvider>
 

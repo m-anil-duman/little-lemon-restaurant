@@ -5,6 +5,8 @@
     align-items: center;
     height: 100vh;
     background-color: var(--grey-color);
+    margin-top: 60px;
+
   }
   
   .reservation-card {
@@ -35,3 +37,4 @@
   .form-input {
     border-color: aqua !important;
   }
+ 

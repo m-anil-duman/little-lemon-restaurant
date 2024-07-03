@@ -3,7 +3,7 @@ import React from 'react';
 import './Introduction.css';
 import { Link } from 'react-router-dom'
 
-const Introduction = ({ title, subtitle, description, image, reverse = false ,type_for_description,button_text,button_path}) => {
+const Introduction = ({ title, subtitle, description, image, reverse = false ,type_for_description = 'p'| 'h3' | null,button_text,button_path}) => {
     const toRenderDescription = () => {
         switch(type_for_description) {
           case 'p' :
@@ -39,13 +39,13 @@ const Introduction = ({ title, subtitle, description, image, reverse = false ,ty
     
       return (
         <>
-        <section className={`section page-top-section-left ${ reverse ? 'page-top-section-margin' : null }`}>
+        <section className={`section mb-15 page-top-section-left ${ reverse ? '' : null }`}>
             <div className='container page-top-container'>
             { !reverse ? <img className={`page-main-image top-section-page-image-margin ${!reverse ? 
         'top-section-page-image-no-margin' : null}`}
-        src={image} alt="image_not_found" /> : null }
+        src={image} alt="image_restaurant_food" /> : null }
               <div className='page_top_box'>
-                  <h1 className='text-white'>{title}</h1>
+                  <h1 className='text-yellow'>{title}</h1>
                   { subtitle ? <h2 className='text-white'>{subtitle}</h2> : null }
                   {toRenderDescription()}
                   { button_path && button_text ? toRenderButton() : null }

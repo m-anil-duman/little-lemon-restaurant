@@ -30,16 +30,22 @@ const Reservation = () => {
   };
 
   const onFinish = async (values) => {
+    setLoading(true);
     const newReservation = {
       date: values.date.format('YYYY-MM-DD'),
       time: moment(values.time, 'HH:mm').format('HH:mm'),
       guests: values.guests,
       occasion: values.occasion,
     };
-    await submitAPI(newReservation,setLoading);
-    setModalMessage('We received your reservation');
-    setModalVisible(true);
-    fetchReservedTimes(newReservation.date);
+    await submitAPI(newReservation);
+    setTimeout(() => {
+      setLoading(false);
+      setModalMessage('We received your reservation');
+      setModalVisible(true);
+      fetchReservedTimes(newReservation.date);
+    }, 2000); // 2-second delay
+
+
   };
 
   const handleModalOk = () => {
@@ -51,6 +57,8 @@ const Reservation = () => {
       <Card className="reservation-card">
         <h2 className="reservation-title">Make a Reservation</h2>
         <Form
+        clearOnDestroy={true}
+          disabled={loading}
           name="reservation"
           layout="vertical"
           initialValues={{ remember: true }}
@@ -72,6 +80,7 @@ const Reservation = () => {
             rules={[{ required: true, message: 'Please select your appointment time!' }]}
           >
             <CustomTimePicker
+
               startTime="09:00"
               endTime="23:00"
               reservedTimes={reservedTimes}
@@ -80,7 +89,7 @@ const Reservation = () => {
           <Form.Item
             name="guests"
             label="Number of Guests"
-            rules={[{ required: true, message: 'Please input the number of guests!'}]}
+            rules={[{ required: true, message: 'Please input the number of guests!' }]}
           >
             <InputNumber min={1} max={20} style={{ width: '100%' }} />
           </Form.Item>
@@ -97,7 +106,7 @@ const Reservation = () => {
             </Select>
           </Form.Item>
           <Form.Item>
-            <Button type="primary" htmlType="submit" className="reservation-form-button" loading={loading}>
+            <Button aria-label="On Click" type="primary" htmlType="submit" className="reservation-form-button" loading={loading}>
               Make Your Reservation
             </Button>
           </Form.Item>
