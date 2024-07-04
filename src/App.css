@@ -33,26 +33,7 @@ h1,h2,h3,h4{
   margin: 0 auto;
 }
 
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: white;
-  position: fixed;
-  width: 100%;
-  transition: top 0.3s;
-  z-index: 1000;
-}
 
-.navbar .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.navbar.hidden {
-  top: -60px;
-}
 
 .introduction {
   padding: 2rem;

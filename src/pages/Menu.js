@@ -3,7 +3,6 @@ import React from 'react';
 import Introduction from '../components/Introduction';
 import image from '../assets/Mario and Adrian A.jpg';
 import DishCard from '../components/DishCard';
-import { Spin } from 'antd';
 import useFetch from '../components/useFetch';
 import SkeletonCard from '../components/SkeletonCard';
 
@@ -52,7 +51,7 @@ const Menu = () => {
           reverse
         />
         <div className="main-content container">
-          <section className="menu-section">
+          <section className="menu-section mb-20">
             <h1>Our Menu</h1>
             <p>Explore our delicious meals.</p>
             {error ? (
