@@ -21,6 +21,7 @@ main {
 h1,h2,h3,h4{
   font-family: Arial, Helvetica, sans-serif;
   color: var(--primary-color);
+  
 }
 .content-wrapper {
   display: flex;
@@ -69,7 +70,10 @@ width: 90%;
   display: grid;
   gap: 16px;
 }
-
+.space-between { 
+  display: flex;
+  justify-content: space-between;
+}
 @media (min-width: 1024px) {
   .menu-list {
     grid-template-columns: repeat(3, 1fr);

@@ -1,6 +1,6 @@
 .page-top-section-left {
     background: #495E57;
-    
+    margin-bottom: 65px;
   }
   .page-top-section-margin{
   }
@@ -50,7 +50,7 @@
   }
   @media screen and (min-width: 740px) {
     .page-top-section-left{
-      margin-bottom: 80px;
+      
     }
   }
   .page-main-image {

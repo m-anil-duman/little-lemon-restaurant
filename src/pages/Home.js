@@ -8,7 +8,7 @@ import SkeletonCard from '../components/SkeletonCard';
 import useFetch from '../components/useFetch';
 
 const Home = () => {
-  const { data, loading, error } = useFetch('https://little-lemon-restaurant-database.onrender.com/menu');
+  const { data, loading } = useFetch('https://little-lemon-restaurant-database.onrender.com/menu');
 
   return (
     <section className='mainSection'>
@@ -21,7 +21,7 @@ const Home = () => {
       />
       <div className="container main-content">
         <section className="specials-section">
-          <h2>This Week's Specials!</h2>
+          <header className='space-between'> <h2>This Week's Specials!</h2> <Button to={'/reservation'} >Reserve a Table</Button></header>
           <div className='menu-list'>
             {loading ? (
               <>
