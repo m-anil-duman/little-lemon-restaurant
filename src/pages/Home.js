@@ -14,8 +14,7 @@ const Home = () => {
     <section className='mainSection'>
       <Introduction
         title="Welcome to Our Restaurant"
-        subtitle="Best place to enjoy delicious meals."
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisl eros, pulvinar facilisis justo mollis, auctor consequat urna."
+        description="Your gateway to the rich flavors of Italy, Greece, and Turkey. Savor authentic Mediterranean dishes, from Greek souvlaki and Italian pasta to Turkish kebabs, all crafted with the freshest ingredients. Enjoy our warm ambiance and let us take you on a culinary journey. Experience the essence of the Mediterranean at The Little Lemon Restaurant!"
         image={image}
         type_for_description={'h3'}
       />

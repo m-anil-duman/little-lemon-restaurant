@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Button, DatePicker, Select, InputNumber, Card, Modal } from 'antd';
 import moment from 'moment';
-import './styles/Reservation.css';
-import { fetchAPI, submitAPI } from '../components/utils';
-import { CustomTimePicker } from '../components/CustomTimePicker';
+import '../styles/Reservation.css';
+import { fetchAPI, submitAPI } from '../../components/utils';
+import { CustomTimePicker } from '../../components/CustomTimePicker';
 
 const { Option } = Select;
 
