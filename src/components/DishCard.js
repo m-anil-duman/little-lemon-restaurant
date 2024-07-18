@@ -2,7 +2,7 @@ import React from 'react';
 import './DishCard.css';
 
 const DishCard = ({ dish }) => {
-  const imageUrl = `http://localhost:3000/${dish['dish-image']}`;
+  const imageUrl = `/${dish['dish-image']}`;
 
   return (
     <article className="dish-card">
